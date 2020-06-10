@@ -1,10 +1,11 @@
 # TikTok Scraper in PHP
 
-`Status: Work in progress.`
+### Experimental Branch
+This branch is used for experimental purposes. If something is worthy of being pushed to master from here, it will be. But this is mostly an effort to find new features for the scraper.
 
-```
-By default, this scraper will attempt to use NodeJS to sign the URL. If you do not have node installed, it will attempt to install it during the composer install step. If you do, it will simply find the path to it. If you'd like to change this logic, you can read more below about setting your signMethod => 'datafetch', an API I have created for signing tiktok urls.
-```
+`Please read below`
+
+**By default, this scraper will attempt to use NodeJS (12+) to sign the URL. If you do not have node installed, it will attempt to install it during the composer install step. If you do, it will simply find the path to it. If you'd like to change this logic, you can read more below about setting your signMethod => 'datafetch', an API I have created for signing tiktok urls.**
 
 ## Installation
 
