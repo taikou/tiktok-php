@@ -25,6 +25,8 @@ class Request {
    */
   private $endpoints = false;
 
+  public $postParams = false;
+
   /**
    * Class construction
    */
@@ -35,6 +37,11 @@ class Request {
 
     // Set the endpoints instance
     $this->endpoints = $endpoints;
+  }
+
+  public function setPostParams ($params = false) {
+    $this->postParams = $params;
+    return $this;
   }
 
   public function call ($endpoint, $customHeaders = []) {
@@ -87,6 +94,13 @@ class Request {
           curl_setopt($ch, CURLOPT_PROXYUSERPWD, $this->config->proxy['auth']);
         }
       }
+    }
+
+    // If it is POST or PUT, set it up
+    if ($this->postParams !== false) {
+      curl_setopt($ch, CURLOPT_POST, 1);
+      curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($this->postParams));
+      curl_setopt( $ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
     }
 
     // Set other headers
@@ -156,6 +170,9 @@ class Request {
 
     // Set the class data variable, and return the instance for chaining.
     $this->data = $response;
+
+    // Reset post params
+    $this->postParams = false;
     return $this;
 	}
 

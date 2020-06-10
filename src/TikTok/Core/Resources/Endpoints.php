@@ -41,6 +41,9 @@ class Endpoints {
   public $endpoints = [
 
     'web' => [
+      // Session stuff
+      'session-id'   => 'https://sgali-mcs.byteoversea.com/v1/user/ssid',
+      'web-id'       => 'https://sgali-mcs.byteoversea.com/v1/user/webid',
 
       // Users
       'user-details' => 'https://www.tiktok.com/@{username}',
@@ -163,7 +166,7 @@ class Endpoints {
   /**
    * Class construction
    */
-  public function __construct ($config = null) {
+  public function __construct ($instance, $config = null) {
     $this->config = $config;
 
     // Set user agent
@@ -173,6 +176,7 @@ class Endpoints {
     } else {
       $this->headers['web']['User-Agent'] = $this->defaultUserAgent;
       $this->headers['m']['User-Agent']   = $this->defaultUserAgent;
+      $instance->set('userAgent', $this->defaultUserAgent);
     }
   }
 

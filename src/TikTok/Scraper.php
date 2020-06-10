@@ -58,7 +58,7 @@ class Scraper
     /**
      * Instantiate the request instance.
      */
-    $this->endpoints = new Endpoints($this->config);
+    $this->endpoints = new Endpoints($this, $this->config);
 
     /**
      * Instantiate the request instance.
@@ -89,6 +89,11 @@ class Scraper
      * Instantiate the music requests class
      */
     $this->music = new \TikTok\Requests\MusicRequests($this);
+
+    /**
+     * Instantiate the session requests class
+     */
+    $this->session = new \TikTok\Requests\SessionRequests($this);
   }
 
 
