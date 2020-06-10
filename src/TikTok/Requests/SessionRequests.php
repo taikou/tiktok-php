@@ -34,9 +34,9 @@ class SessionRequests
     $res = $this->instance
       ->request
       ->setPostParams([
-        'app_id'     => 1988,
+        'app_id'         => 1988,
         'user_unique_id' => $userUniqueId,
-        'web_id' => $webId
+        'web_id'         => $webId
       ])
       ->call($endpoint)
       ->response();

@@ -5,7 +5,7 @@ namespace TikTok\Core\Libraries;
 class DataFetch {
 
   /**
-   * Used to communicate with the Heartbeat API
+   * Used to communicate with the datafetch API
    */
   public static function sign($url, $userAgent, $key = null) {
       // Initiate CURL
