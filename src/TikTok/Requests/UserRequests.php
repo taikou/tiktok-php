@@ -86,20 +86,22 @@ class UserRequests
 
     // Store videos in an array.
     $videos = [];
-
+      
+    // Add video to the videos array.
+    foreach ($data->items as $vid) $videos[] = $vid;
+    
     /**
      * Do a while loop, and while hasMore is true,
      * we will continue calling the videos with maxCursor
      */
     while ($data->hasMore === true) {
 
-      // Add video to the videos array.
-      foreach ($data->items as $vid) $videos[] = $vid;
-
       // Call it with a new maxCursor
       $data = $this->videos($user, 10, [
         'maxCursor' => $data->maxCursor
       ]);
+      // Add video to the videos array.
+      foreach ($data->items as $vid) $videos[] = $vid;
     }
 
     return $videos;
